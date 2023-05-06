@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+    <title>Fotos gatinhos</title>
+  </head>
+
+  <body>
+    <div id="gato-background">
+      <img id="gato-img"><br>
+      <button id="gato-aleatorio"> Gerar nova foto de gatinhos </button>
+    </div>
+    
+    <script>
+      async function fetchImagemGato() {
+        try {
+          let image = document.getElementById("gato-img");
+          const resp = await fetch('https://api.thecatapi.com/v1/images/search');
+          if (!resp.ok) {
+            throw new Error('Não foi possível carregar a imagem.');
+          }
+          const json = await resp.json();
+          image.src = json[0].url;
+        } catch (error) {
+          console.error('Fetch error:', error);
+        }
+      }
+
+      function clickBotao() {
+        let button = document.getElementById("gato-aleatorio");
+        button.addEventListener("click", fetchImagemGato);
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        fetchImagemGato();
+        clickBotao();
+      });
+
+    </script>
+  </body>
+</html>
