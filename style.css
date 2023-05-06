@@ -10,15 +10,10 @@
     margin-bottom: 20px;
   }
   
-  #div {
-    background-color: green;
-    opacity: 0.3;
-  }
-  
   #gato-aleatorio {
     background-color: #dd24dd;
     border: none;
-    color: white;
+    color: rgb(255, 255, 255);
     padding: 10px 20px;
     text-align: center;
     text-decoration: none;
